@@ -1,0 +1,270 @@
+install java version 8
+
+#sudo yum install java-1.8.0-openjdk
+
+to check java version
+#java -version
+
+insall latest version of apache tomcat 9
+to install apache tomcat tar file we need to get wget file
+
+#sudo root
+#sudo yum install wget
+
+http://www.trieuvan.com/apache/tomcat/tomcat-9/v9.0.5/bin/
+
+ apache-tomcat-9.0.5.tar.gz          06-Feb-2018 14:04  9.0M 
+
+copy link 
+
+#wget http://www.trieuvan.com/apache/tomcat/tomcat-9/v9.0.5/bin/apache-tomcat-9.0.5.tar.gz
+
+#tar xzf apache-tomcat-9.0.5
+
+#cd apache-tomcat-9.0.5
+#cd bin
+#./start.sh
+
+goto browswer
+ec2>security groups>inboud>edit> change port range to 8080
+
+
+
+download jenkins.war-->http://updates.jenkins-ci.org/download/war/
+
+#wget http://updates.jenkins-ci.org/download/war/2.106/jenkins.war
+
+
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <role rolename="admin-gui"/>
+  <role rolename="admin-script"/>
+  <user username="mohan" password="Mohanraj@1" roles="manager-gui,manager-script,manager-jmx,manager-status,admin-gui,admin-script"/>
+-->
+</tomcat-users>
+
+manager-gui
+
+ java -jar jenkins.war --httpport=9090
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- The contents of this file will be loaded for each web application -->
+<Context>
+
+    <!-- Default set of monitored resources. If one of these changes, the    -->
+    <!-- web application will be reloaded.                                   -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+    <Manager pathname="" />
+    -->
+</Context>
+
+
+<tomcat-users> xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+
+ wget -o /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+
+rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+
+yum install jenkins
+
+
+[root@ip-172-31-42-236 META-INF]# cat context.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<Context antiResourceLocking="false" privileged="true" >
+<!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />-->
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+</Context>
+[root@ip-172-31-42-236 META-INF]#
+[root@ip-172-31-42-236 META-INF]# pwd
+/root/apache-tomcat-9.0.5/webapps/manager/META-INF
+[root@ip-172-31-42-236 META-INF]#
+
+
+******************************
+
+[root@ip-172-31-42-236 conf]# cat tomcat-users.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+<!--
+  NOTE:  By default, no user is included in the "manager-gui" role required
+  to operate the "/manager/html" web application.  If you wish to use this app,
+  you must define such a user - the username and password are arbitrary. It is
+  strongly recommended that you do NOT use one of the users in the commented out
+  section below since they are intended for use with the examples web
+  application.
+-->
+<!--
+  NOTE:  The sample user and role entries below are intended for use with the
+  examples web application. They are wrapped in a comment and thus are ignored
+  when reading this file. If you wish to configure these users for use with the
+  examples web application, do not forget to remove the <!.. ..> that surrounds
+  them. You will also need to set the passwords to something appropriate.
+-->
+<!--
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <user username="tomcat" password="<must-be-changed>" roles="tomcat"/>
+  <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
+  <user username="role1" password="<must-be-changed>" roles="role1"/>
+-->
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <role rolename="admin-gui"/>
+  <role rolename="admin-script"/>
+  <user username="root" password="mohan" roles="manager-gui,manager-script,manager-jmx,manager-status,admin-gui,admin-script"/>
+</tomcat-users>
+
+
+cat /root/.jenkins/secrets/initialAdminPassword
+
+b9bf27d64ba244a5a9940b752c32b3be
+
+
+GIT
+=================================
+#sudo yum groupinstall "Development Tools"
+minimum development tools are installed
+
+#sudo yum install gettext-devel openssl-devel perl-CPAN perl-devel zlib-devel
+
+# wget https://git.kernel.org/pub/scm/git/git.git/snapshot/git-2.16.1.tar.gz
+pathto install latest git sotware
+
+# tar -zxvf git-2.16.1.tar.gz
+
+# cd git-2.16.1
+
+# make configure
+configuring git
+
+# ./configure --prefix=/usr/local
+now software built and ready to run.
+
+# sudo make install
+copy the built program to correct location
+
+# git --version
+git version 1.8.3.1
+
+# git config --global user.name "mohan"
+# git config --global user.email "mohanraj.1183@gmail.com"
+
+# git config --list
+user.name=mohan
+user.email=mohanraj.1183@gmail.com
+
+# ssh-keygen -t rsa -b 4096 -C "mohanraj.1183@gmail.com"
+/root/.ssh/id_rsa
+rsa token created
+
+# eval "$(ssh-agent -s)"
+Agent pid 27254
+ssh agent enabled
+
+# ssh-add ~/.ssh/id_rsa
+Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)
+add ssh key to ssh agent
+
+now add the key to git hub account
+
+# cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDYsJeRSMHlBchpJ32yQoy/VoN/0/q3LPIHnq/sTrcE0FHZQaQeGeUTulDrq8fwBTBZStWTqXPrStpp0E+vwh+jgEfNNtTi81spUz/1gD5A7sz+gxSU69e1adGofjg8XKM8woHm4guFtwSiyxV7VEl24zzUNDiaNDETuZGwazzq2s/1w48zWjSaqYLTBdaRNSGAG9lmrtY4wd9M/6Q5NtWQSWphlQJGnRZ3tY/yl+H6Ud/EDKuzor4S0yk3dpXfZwIvtI3ierwOmAp/He1+jKnOgRwi6RHjr7RRYnEwUfsPRzEL/MU0R73P4I/acKBwd+dUtqM0KVZVfMYBsCHJV7nqazUI4sC0K7tlWo74UEfKgyMUEWHCykndOobxGS609lByceAu72/jo8SSxXI9BxQZbOw8wJy8+HfnX10P3qbK/Xr7SCIP4Crg2ESClJIzGG0QHal1ldAbEDOm8oU5Zs15PQx7/Y7oog5+F1xr0sgA7W46Y7Welv0JSXx33u0V8XZ4fiKKR0W9a8KP1IZq/ojaSZZ/matVnAu3rCR8S9l/0BgGAi/J7Aqqwk/z7c99z+jgwQ1KCBn/2Vmm3PFVZlFI/nbYv4ajiD1eb9a+sKjHF2OuGHYELvA0AoDQYVDZRJlWigLAXwPDg3OSPYKVEAPTvVnkdKzt+Omj1wKdAO0jnQ== mohanraj.1183@gmail.com
+
+goto git official website and login and goto settings>ssh and gpg keys>new ssh key>enter tilte > paste the key
+
+come back to terminal
+
+# ssh -T git@github.com
+to test the ssh
+
+push and pull operation
+----------------------
+create a git repository and cd into it and initialise it
+
+# git init
+
+we need to allow git to hold ur files
+# git remote add origin https://github.com/mohanraj1183/master.git--> take from git 
+
+to pull all files from repo
+# git pull origin master
+
+to add new file in repo
+# git add test.sh
+
+tom commit added file
+# git commit -m "first commit"
+
+# git push origin master
+
+
+#yum install java-devel
+
+
+/root/.jenkins	
