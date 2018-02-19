@@ -1,0 +1,82 @@
+puppet- congiguration mgmt tool
+
+why-automate the configuration
+
+how puppet works- client server agent
+all inforfation in puppet manifests(.PP) to change resoursce status
+all actions are reported
+
+nodes
+workstation
+
+puppet master - service runs in main servre(masterserver)
+puppet agent- runs in client
+sends request for the catalog to master
+report documented
+
+catalog- specifies the resourse state
+
+manifests- 
+
+resources- any change in the client side
+types:
+type
+title
+
+
+
+
+
+
+
+sample syntax:
+type {'title':
+	argument=>value,
+	other_arg=>value
+}
+
+puppet describe file
+puppetdescribe --list
+
+classes
+
+https communication
+
+server configureation
+----------------------------------
+#yum install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+
+#sudo yum install puppet-server
+
+#vi /etc/puppet/puppet.config
+
+dns-alt_names = puppet, puppet.learnitguide.net, puppetmaster.learnitguide.net
+certname = puppet
+
+# sudo -u puppet puppet master --no-daemonize --verbose
+
+#systemctl start puppetmaster
+#systemctl enable puppetmaster
+
+
+client configuration
+------------------------------------
+#yum install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+
+#sudo yum install puppet
+
+
+#vi /etc/puppet/puppet.config
+
+server = puppetmaster.learnitguide.net
+
+# puppet agent -t
+
+goto master
+# puppet certlist
+#puppet cert client name
+
+#systemctl start puppet
+#systemctl enable puppet
+
+pupperagent --fingerprint
